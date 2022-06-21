@@ -4,7 +4,6 @@
 Tanques são projetados para controlar e supervisionar processos industrias, afim de manter parâmetros com temperatura e nível controlados para a geração de um produto ou subproduto. Nesses casos, o controle deve ocorre em tempo real por meio da captação de sensores e pela ação de atuadores. Surgindo assim,  requisitos temporais que devem ser supridos por meio dos softwares em tempo real atrelados a sistemas computacionais capazes de compreender tais requisitos. Nele, o controle da temperatura no interior da caldeira deve se limitar a temperatura de referência definida pelo usuário e o controle de nível a altura pré estabelecida. Ambos os controles utilizam-se de parâmetros como fluxo de vasão de entrada, fluxo de vasão de saída, temperatura e altura, captados por sensores com periodicidade, atualidade, deadline e simultaneidade definidos.  
 
 # Introdução
-	
 Software em tempo real, pode ser entendido como sistemas computacionais com requisitos de tempo real, sendo uma categoria especial de sistemas operacionais. Essa técnica, aplica-se a problemas que exijam requisitos com funcionalidades de natureza temporal não triviais, nesse sentido é essencial a confiabilidade no tempo de execução da tarefa e compatibilidade com prazos e requisitos definidos, ocasionando em resultados corretos logicamente e temporalmente[1].
 	
 Para os requisitos temporais, é necessário destacar que estão diretamente acoplados ao meio, no sentido de estarem fortemente associados com o mundo físico e que por isso a extração dos requisitos devem ocorrer na perspectiva do sistema responder ao estímulos do ambiente. Destacam-se os seguintes requisitos temporais:  periodicidade, Deadline, atualidade ou frescor dos dados e a simultaneidade dos dados[1].
@@ -16,3 +15,12 @@ Nesse sentido, para acessar recursos compartilhados por outras tarefas é necess
 Para programas concorrentes o problema da seção crítica é mais frequente, mas também existem  situações onde é necessário sincronizar tarefas que colaborem atráves de variáveis compartilhadas, nesses casos, usar apenas a exclusão mutua e Mutex pode gerar mais problemas. Portanto, é necessário definir outros padrões de sincronização como o semáforo e o monitor que são padrões para a programação concorrente com variáveis compartilhadas entre tarefas.
 	
 Dessa maneira, os monitores são módulos onde as interações entre tarefas acontecem. Para os monitores, a idéia é tornar determinados recursos privativo as tarefas[1]. Nesse sentido, o monitor tenta quebrar o programa e recursos em módulos que são acessado as tarefas.
+
+# Metodologia	
+O método de sincronização e comunicação entre as tarefas propostas nesse trabalho é definido por meio do recurso de variáveis compartilhadas, portanto, definiu-se um sistema baseado em tarefas que realiza comunicação através de variáveis globais compartilhadas.
+	
+Nesse sentido, o trabalho basea-se em tarefas que são implementadas como thread de um mesmo processo, ou seja, o sistema é baseado em tarefas que são vistas pelo sistema operacional como thread.
+	
+Além disso,  é criado variáveis globais que são acessadas por várias tarefas (thread), permitindo diretamente a troca de dados. Dessa maneira, todas as threads automaticamente compartilham as variáveis globias do programa e as variáveis locais pertencentes a cada thread são tipicamente alocadas na  sua respectiva pilha, ou seja, são privadas. 
+	
+Afim de reduzir problemas tipicamente do método de sincronização e comunicação entre tarefas, como é o caso da inconsistência de dados, é garantindo que as threads acessem  variáveis compartilhadas executando sua seção crítica sem interferir com as seções críticas das outras threads. Para tanto, é utilizado o recurso do mutex, produzindo uma exclusão mútua, para evitar que várias tarefas acessem ao mesmo tempo uma variável. Bem como, o mecanismo de monitores que tenta quebrar os recursos em módulos, ao incapsular as variáveis globais, e a interação de acesso a esses recursos ocorre por meio da chamada de funções.
