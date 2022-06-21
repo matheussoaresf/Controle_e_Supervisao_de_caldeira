@@ -1,5 +1,5 @@
 # Controle e supervisão de um sistema de caldeira simulado
-
+Projeto desenvolvido na disciplina de Software de tempo real
 # Resumo
 Tanques são projetados para controlar e supervisionar processos industrias, afim de manter parâmetros com temperatura e nível controlados para a geração de um produto ou subproduto. Nesses casos, o controle deve ocorre em tempo real por meio da captação de sensores e pela ação de atuadores. Surgindo assim,  requisitos temporais que devem ser supridos por meio dos softwares em tempo real atrelados a sistemas computacionais capazes de compreender tais requisitos. Nele, o controle da temperatura no interior da caldeira deve se limitar a temperatura de referência definida pelo usuário e o controle de nível a altura pré estabelecida. Ambos os controles utilizam-se de parâmetros como fluxo de vasão de entrada, fluxo de vasão de saída, temperatura e altura, captados por sensores com periodicidade, atualidade, deadline e simultaneidade definidos.  
 
